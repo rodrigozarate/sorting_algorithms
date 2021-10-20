@@ -10,7 +10,8 @@
 
     For this project you are given the following print_array, and print_list functions:
 
-```#include <stdlib.h>
+```
+#include <stdlib.h>
 #include <stdio.h>
 
 /**
@@ -32,10 +33,12 @@ void print_array(const int *array, size_t size)
         ++i;
     }
     printf("\n");
-}```
+}
+```
 
 
-```#include <stdio.h>
+```
+#include <stdio.h>
 #include "sort.h"
 
 /**
@@ -57,7 +60,8 @@ void print_list(const listint_t *list)
         list = list->next;
     }
     printf("\n");
-}```
+}
+```
 
 Please use the following data structure for doubly linked list:
 
