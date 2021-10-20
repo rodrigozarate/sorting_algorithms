@@ -10,7 +10,7 @@
 
     For this project you are given the following print_array, and print_list functions:
 
-`#include <stdlib.h>
+```#include <stdlib.h>
 #include <stdio.h>
 
 /**
@@ -32,10 +32,10 @@ void print_array(const int *array, size_t size)
         ++i;
     }
     printf("\n");
-}`
+}```
 
 
-`#include <stdio.h>
+```#include <stdio.h>
 #include "sort.h"
 
 /**
@@ -57,11 +57,11 @@ void print_list(const listint_t *list)
         list = list->next;
     }
     printf("\n");
-}`
+}```
 
 Please use the following data structure for doubly linked list:
 
-`
+```
 /**
  * struct listint_s - Doubly linked list node
  *
@@ -75,7 +75,7 @@ typedef struct listint_s
     struct listint_s *prev;
     struct listint_s *next;
 } listint_t;
-`
+```
 Please, note this format is used for Quiz and Task questions.
 
     O(1)
@@ -92,4 +92,3 @@ Please, note this format is used for Quiz and Task questions.
 ### 1. Insertion sort 
 ### 2. Selection sort 
 ### 3. Quick sort 
-
