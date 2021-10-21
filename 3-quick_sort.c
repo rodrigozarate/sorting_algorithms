@@ -15,7 +15,14 @@
 
 void quick_sort(int *array, size_t size)
 {
-/* do the sort */
+/* compare first and last element */
+/* if a > b swap */
+/* else */
+/* move pointer b to the init of array */
 /* do the lomuto partition */
+/* once b pointer reach the end */
+/* a is set to pivot */
+/* order elements by comparison */
+/* once b poniter reach teh end start process again whit remainig array */
 /* end */
 }
