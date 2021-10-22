@@ -33,7 +33,7 @@ void swap_node(listint_t **first_node, listint_t **second_node)
 		(*second_node)->prev = NULL;
 		(*first_node)->next = NULL;
 	}
-	else if ((*first_node)->prev == NULL) /* EDGE CASE: first node is head of DLL */
+	else if ((*first_node)->prev == NULL) /* EDGE: first node is head of DLL */
 	{
 		(*first_node)->prev	= (*first_node)->next;
 		(*first_node)->next = (*second_node)->next;
@@ -41,7 +41,7 @@ void swap_node(listint_t **first_node, listint_t **second_node)
 		(*second_node)->next = (*second_node)->prev;
 		(*second_node)->prev = NULL;
 	}
-	else if ((*second_node)->next == NULL) /* EDGE CASE: secnd node is tail of DLL */
+	else if ((*second_node)->next == NULL) /* EDGE: second nd is tail of DLL */
 	{
 		(*second_node)->next = (*second_node)->prev;
 		(*second_node)->prev = (*first_node)->prev;
