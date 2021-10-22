@@ -47,17 +47,6 @@ void insertion_sort_list(listint_t **list)
 	}
 }
 
-/*
-* swap_node.c - Implement insertion sort algorithm
-* Date: 20, October 2021
-* Author: Oscar Angel and Rodrigo Zárate Algecira
-*/
-
-#include <stddef.h>
-#include "sort.h"
-#include <stdio.h>
-#include <stdlib.h>
-
 /**
 * swap_node - swaps two connected nodes of a double linked list where
 * first_node must come first in the linked list, and second_node next.
