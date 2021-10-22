@@ -13,88 +13,37 @@
 * insertion_sort_list - function that sorts a doubly linked list of integers
 * in ascending order using the Insertion sort algorithm
 *
-* @array: pointer
-* @size: structure
+* @list: pointer to pointer to listin_t node
 *
 * Return: Void
 */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *sorted_ptr = *list;
-	listint_t *runner_ptr = NULL;
-	listint_t *tmp = NULL;
+	listint_t *sorted_ptr;
+	listint_t *second_node;
 
+	sorted_ptr = *list;
 	if (!*list) /* GUARD CONDITION */
-		return (NULL);
+		return;
 	while (sorted_ptr != NULL)
 	{
-		tmp = sorted_ptr->next;
-		if (!tmp)
+		second_node = sorted_ptr->next;
+		if (!second_node)
+			return;
+		if (second_node->n >= sorted_ptr->n)
 		{
-			if (tmp->n => sorted_ptr->n)
-			{
-				sorted_ptr = sorted_ptr->next;
-				continue;
-			}
-			else
-			{
-				runner_ptr = sorted_ptr;
-				while (runner_ptr->prev !=
-			}
+			sorted_ptr = sorted_ptr->next;
+			continue;
+		}
+		else
+		{
+			swap_node(&sorted_ptr, &second_node);
+			if ((*list)->prev != NULL)
+				*list = (*list)->prev;
+			print_list(*list);
+			sorted_ptr = *list;
+			continue;
 		}
 		sorted_ptr = sorted_ptr->next;
 	}
-}
-
-/**
- * create_listint - Creates a doubly linked list from an array of integers
- *
- * @array: Array to convert to a doubly linked list
- * @size: Size of the array
- *
- * Return: Pointer to the first element of the created list. NULL on failure
- */
-listint_t *create_listint(const int *array, size_t size)
-{
-    listint_t *list;
-    listint_t *node;
-    int *tmp;
-
-    list = NULL;
-    while (size--)
-    {
-        node = malloc(sizeof(*node));
-        if (!node)
-            return (NULL);
-        tmp = (int *)&node->n;
-        *tmp = array[size];
-        node->next = list;
-        node->prev = NULL;
-        list = node;
-        if (list->next)
-            list->next->prev = list;
-    }
-    return (list);
-}
-
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
-int main(void)
-{
-    listint_t *list;
-    int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
-    size_t n = sizeof(array) / sizeof(array[0]);
-
-    list = create_listint(array, n);
-    if (!list)
-        return (1);
-    print_list(list);
-    printf("\n");
-    insertion_sort_list(&list);
-    printf("\n");
-    print_list(list);
-    return (0);
 }
