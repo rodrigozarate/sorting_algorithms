@@ -34,7 +34,7 @@ void quick_sort(int *array, size_t size)
 */
 void quick_part(int *array, int low, int high, size_t size)
 {
-	size_t partition;
+	int partition;
 
 	/* setup vars */
 	if (low < high)
@@ -58,24 +58,24 @@ void quick_part(int *array, int low, int high, size_t size)
 size_t lomuto(int *array, int low, int high, size_t size)
 {
 	int i, j;
-	int pivot, temp, temp2;
+	int pivot, temp;
 
 	pivot = array[high];
 	i = low - 1;
-	j = low;
-	for(; j < high; j++)
+	
+	for(j = low; j <= high; j++)
 	{
 		if(pivot >= array[j])
 		{
 			i++;
-			temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
+			if (i != j)
+			{
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+				print_array(array, size);
+			}
 		}
 	}
-	temp2 = array[i + 1];
-	array[i + 1] = array[high];
-	array[high] = temp2;
-	print_array(array, size);
-	return (i + 1);
+	return (i);
 }
