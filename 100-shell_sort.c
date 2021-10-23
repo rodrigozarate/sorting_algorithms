@@ -2,38 +2,6 @@
 #include "sort.h"
 
 /**
- * insertionsort - sorts array of integers following the insertion sort alg.
- *
- * @array: Array to convert to a doubly linked list
- * @size: Size of the array
- *
- * Return: Void
- */
-void insertionsort(int *array, size_t size)
-{
-	size_t i, j, k, l;
-	int tmp;
-
-	i = 0;
-	j = 1;
-	while (j < size)
-	{
-		k = i;
-		l = j;
-		while (array[k] > array[l] && k >= 0)
-		{
-			tmp = array[k];
-			array[k] = array[l];
-			array[l] = tmp;
-			k--;
-			l--;
-		}
-		i++;
-		j++;
-	}
-}
-
-/**
  * shell_sort -  function that sorts an array of integers
  * in ascending order using the Shell sort algorithm, using the Knuth sequence.
  * @array: array of integers
@@ -78,4 +46,36 @@ void shell_sort(int *array, size_t size)
 	}
 	insertionsort(array, size);
 	print_array(array, size);
+}
+
+/**
+ * insertionsort - sorts array of integers following the insertion sort alg.
+ *
+ * @array: Array to convert to a doubly linked list
+ * @size: Size of the array
+ *
+ * Return: Void
+ */
+void insertionsort(int *array, size_t size)
+{
+        size_t i, j, k, l;
+        int tmp;
+
+        i = 0;
+        j = 1;
+        while (j < size)
+        {
+                k = i;
+                l = j;
+                while (array[k] > array[l] && k >= 0)
+                {
+                        tmp = array[k];
+                        array[k] = array[l];
+                        array[l] = tmp;
+                        k--;
+                        l--;
+                }
+                i++;
+                j++;
+        }
 }
