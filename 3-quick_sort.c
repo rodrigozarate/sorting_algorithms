@@ -22,7 +22,7 @@ void quick_sort(int *array, size_t size)
 	high = size - 1;
 	/* Call recursive function */
 	quick_part(array, low, high, size);
-		
+
 /* end */
 }
 
@@ -31,6 +31,7 @@ void quick_sort(int *array, size_t size)
 * @array: pointer
 * @low: size_t int special definition
 * @high: size_t int special definition
+* @size: size_t int special definition of array size
 */
 void quick_part(int *array, int low, int high, size_t size)
 {
@@ -54,6 +55,7 @@ void quick_part(int *array, int low, int high, size_t size)
 * @low: size_t int special definition
 * @high: size_t int special definition
 * @size: size_t int special definition to be able to print array
+* Return: size_t
 */
 size_t lomuto(int *array, int low, int high, size_t size)
 {
@@ -62,10 +64,10 @@ size_t lomuto(int *array, int low, int high, size_t size)
 
 	pivot = array[high];
 	i = low - 1;
-	
-	for(j = low; j <= high; j++)
+
+	for (j = low; j <= high; j++)
 	{
-		if(pivot >= array[j])
+		if (pivot >= array[j])
 		{
 			i++;
 			if (i != j)
