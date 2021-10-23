@@ -15,14 +15,50 @@
 
 void quick_sort(int *array, size_t size)
 {
-/* compare first and last element */
-/* if a > b swap */
-/* else */
-/* move pointer b to the init of array */
-/* do the lomuto partition */
-/* once b pointer reach the end */
-/* a is set to pivot */
-/* order elements by comparison */
-/* once b poniter reach teh end start process again whit remainig array */
+	size_t low, high;
+
+	/* setup vars */
+	low = 0;
+	hight = size;
+	/* Call recursive function */
+	quick_part(array, low, high);
+		
 /* end */
+}
+
+void quick_part(int *array, size_t low, size_t high)
+{
+	size_t init_size;
+
+	/* setup vars */
+	init_size = high;
+	if (array[low] < array[high])
+	{
+		partition = lomuto(array, low, high, init_size);
+		quick_part(array, low, partition - 1);
+		quick_part(array, partition + 1, high);
+	}
+}
+
+size_t lomuto(int *aray, size_t low, size_t high, size_t size)
+{
+	size_t i, j;
+	int temp;
+
+	i = low -1;
+	for(j = low; j < high; j++)
+	{
+		if(pivot >= array[j])
+		{
+			i++;
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+			print_array(array, size);
+		}
+	temp = array[i + 1];
+	array[i + 1] = array[high];
+	array[high] = temp;
+	}
+	return (i + 1);
 }
