@@ -5,7 +5,6 @@
 */
 
 #include <stddef.h>
-#include <stdio.h>
 #include "sort.h"
 
 /**
@@ -16,7 +15,7 @@
 
 void quick_sort(int *array, size_t size)
 {
-	size_t low, high;
+	int low, high;
 
 	/* setup vars */
 	low = 0;
@@ -33,22 +32,18 @@ void quick_sort(int *array, size_t size)
 * @low: size_t int special definition
 * @high: size_t int special definition
 */
-void quick_part(int *array, size_t low, size_t high, size_t size)
+void quick_part(int *array, int low, int high, size_t size)
 {
 	size_t partition;
 
 	/* setup vars */
-	printf("in quick_part \n");
-	
-	printf("low: %zu - high: %zu - init_size: %zu\n", low, high, size);
-	printf("prev oop \n");
-	printf("Low: %zu - High: %zu", low, high);
 	if (low < high)
 	{
-		printf("Low: %zu - High: %zu \n", low, high);
+		/* set pivot */
 		partition = lomuto(array, low, high, size);
-		printf("Partition: %zu \n", partition);
+		/* go to init of array */
 		quick_part(array, low, partition - 1, size);
+		/* go to end of array */
 		quick_part(array, partition + 1, high, size);
 	}
 }
@@ -60,18 +55,15 @@ void quick_part(int *array, size_t low, size_t high, size_t size)
 * @high: size_t int special definition
 * @size: size_t int special definition to be able to print array
 */
-size_t lomuto(int *array, size_t low, size_t high, size_t size)
+size_t lomuto(int *array, int low, int high, size_t size)
 {
-	size_t i, j;
-	int pivot, temp;
+	int i, j;
+	int pivot, temp, temp2;
 
-	printf("in lomuto \n");
-	printf("low: %zu - high: %zu - size: %zu\n", low, high, size);
 	pivot = array[high];
-	printf("Pivot: %d \n", pivot);
-	i = low -1;
+	i = low - 1;
 	j = low;
-	for(; j <= high; j++)
+	for(; j < high; j++)
 	{
 		if(pivot >= array[j])
 		{
@@ -79,13 +71,11 @@ size_t lomuto(int *array, size_t low, size_t high, size_t size)
 			temp = array[i];
 			array[i] = array[j];
 			array[j] = temp;
-			print_array(array, size);
 		}
 	}
-	temp = array[i + 1];
+	temp2 = array[i + 1];
 	array[i + 1] = array[high];
-	array[high] = temp;
-	printf("end of for in lomuto \n");
+	array[high] = temp2;
 	print_array(array, size);
 	return (i + 1);
 }
