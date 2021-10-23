@@ -22,7 +22,7 @@ void quick_sort(int *array, size_t size)
 	low = 0;
 	high = size - 1;
 	/* Call recursive function */
-	quick_part(array, low, high);
+	quick_part(array, low, high, size);
 		
 /* end */
 }
@@ -33,22 +33,23 @@ void quick_sort(int *array, size_t size)
 * @low: size_t int special definition
 * @high: size_t int special definition
 */
-void quick_part(int *array, size_t low, size_t high)
+void quick_part(int *array, size_t low, size_t high, size_t size)
 {
-	size_t init_size, partition;
+	size_t partition;
 
 	/* setup vars */
 	printf("in quick_part \n");
-	init_size = high;
-	printf("low: %zu - high: %zu - init_size: %zu\n", low, high, init_size);
+	
+	printf("low: %zu - high: %zu - init_size: %zu\n", low, high, size);
 	printf("prev oop \n");
-	printf("Low: %d - High: %d", array[low], array[high]);
+	printf("Low: %zu - High: %zu", low, high);
 	if (low < high)
 	{
-		printf("Low: %d - High: %d \n", array[low], array[high]);
-		partition = lomuto(array, low, high, init_size);
-		quick_part(array, low, partition - 1);
-		quick_part(array, partition + 1, high);
+		printf("Low: %zu - High: %zu \n", low, high);
+		partition = lomuto(array, low, high, size);
+		printf("Partition: %zu \n", partition);
+		quick_part(array, low, partition - 1, size);
+		quick_part(array, partition + 1, high, size);
 	}
 }
 
@@ -67,9 +68,10 @@ size_t lomuto(int *array, size_t low, size_t high, size_t size)
 	printf("in lomuto \n");
 	printf("low: %zu - high: %zu - size: %zu\n", low, high, size);
 	pivot = array[high];
+	printf("Pivot: %d \n", pivot);
 	i = low -1;
 	j = low;
-	for(; j < high; j++)
+	for(; j <= high; j++)
 	{
 		if(pivot >= array[j])
 		{
