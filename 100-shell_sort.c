@@ -15,10 +15,14 @@ void shell_sort(int *array, size_t size)
 	int tmp;
 	int second_swap;
 
+	if (!array || !size || size < 2)
+		return;
+
 	gap = 1;
 	while (gap < size)
 		gap = gap * 3 + 1;
-	gap /= 3;
+	/* esto debe pasar despues */
+	/* gap /= 3; */
 	while (gap != 1)
 	{
 		i = 0;
@@ -41,9 +45,9 @@ void shell_sort(int *array, size_t size)
 			i++;
 			j++;
 		}
-		print_array(array, size);
 		gap /= 3;
 	}
+	print_array(array, size);
 	insertionsort(array, size);
 	print_array(array, size);
 }
@@ -58,24 +62,24 @@ void shell_sort(int *array, size_t size)
  */
 void insertionsort(int *array, size_t size)
 {
-        size_t i, j, k, l;
-        int tmp;
+	size_t i, j, k, l;
+	int tmp;
 
-        i = 0;
-        j = 1;
-        while (j < size)
-        {
-                k = i;
-                l = j;
-                while (array[k] > array[l] && k >= 0)
-                {
-                        tmp = array[k];
-                        array[k] = array[l];
-                        array[l] = tmp;
-                        k--;
-                        l--;
-                }
-                i++;
-                j++;
-        }
+	i = 0;
+	j = 1;
+	while (j < size)
+	{
+		k = i;
+		l = j;
+		while (array[k] > array[l] && k >= 0)
+		{
+			tmp = array[k];
+			array[k] = array[l];
+			array[l] = tmp;
+			k--;
+			l--;
+		}
+		i++;
+		j++;
+	}
 }
