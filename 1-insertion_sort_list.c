@@ -6,8 +6,6 @@
 
 #include <stddef.h>
 #include "sort.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
 * insertion_sort_list - function that sorts a doubly linked list of integers
