@@ -21,7 +21,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *second_node;
 
 	sorted_ptr = *list;
-	if (!*list) /* GUARD CONDITION */
+	if (!*list || !list || !(*list)->next ) /* GUARD CONDITION */
 		return;
 	while (sorted_ptr != NULL)
 	{
