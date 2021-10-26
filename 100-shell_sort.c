@@ -15,10 +15,13 @@ void shell_sort(int *array, size_t size)
 	int temp;
 
 	/* create array of gaps lower than array size */
-	for (i = 1, gap = 1; gap < 2; i += 1)
+	for (i = 1, gap = 1; gap < size; i += 1)
 	{
 		 gap = gap * 3 + 1;
 	}
+	/* remove bigger */
+	gap = (gap - 1) / 3;
+
 	while (gap > 0)
 	{
 		for (j = gap; j < size; j++)
