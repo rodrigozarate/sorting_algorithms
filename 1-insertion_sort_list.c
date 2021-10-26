@@ -3,8 +3,7 @@
 * Date: 20, October 2021
 * Author: Oscar Angel and Rodrigo Zárate Algecira
 */
-#include <stdlib.h>
-#include <stddef.h>
+
 #include "sort.h"
 
 /**
@@ -17,71 +16,71 @@
 */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *sorted_ptr;
-	listint_t *second_node;
+	listint_t *head, prev;
+	int stored;
 
-	sorted_ptr = *list;
-	if (!*list || !list || !(*list)->next) /* GUARD CONDITION */
-		return;
-	while (sorted_ptr->next != NULL)
+	head = *list;
+	/* walk the list */
+	while (head)
 	{
-		second_node = sorted_ptr->next;
-		if (!second_node)
-			return;
-		if (second_node->n < sorted_ptr->n)
+		/* save initial place */
+		prev = head->prev;
+		stored = head->n;
+
+		while (prev && prev->n > stored)
 		{
-			swap_node(&sorted_ptr, &second_node);
-			sorted_ptr = (*list);
-			if ((*list)->prev != NULL)
-				*list = (*list)->prev;
+			swap_node(prev, head, list);
 			print_list(*list);
-			continue;
+			prev = head->prev;
 		}
-		sorted_ptr = sorted_ptr->next;
+		/* move pointer */
+		head = head->next;
 	}
+
 }
 
 /**
 * swap_node - swaps two connected nodes of a double linked list where
 * first_node must come first in the linked list, and second_node next.
 *
-* @first_node: pointer to pointer to listint_t node
-* @second_node: pointer to pointer to listint_t node
-*
+* @node_x: pointer
+* @node_y: pointer
+* @head: double pointer
 * Return: Void
 */
-void swap_node(listint_t **first_node, listint_t **second_node)
+
+void swap_node(listint_t *node_x, listint_t *node_y, listint_t **head)
 {
-	if ((*first_node)->prev == NULL && (*second_node)->next == NULL)
+	listint_t *temp1 = NULL, *temp2 = NULL;
+
+	/* end reached */
+	if (node_x == NULL || node_y == NULL)
 	{
-		(*second_node)->next = (*second_node)->prev;
-		(*first_node)->prev = (*first_node)->next;
-		(*second_node)->prev = NULL;
-		(*first_node)->next = NULL;
+		return;
 	}
-	else if ((*first_node)->prev == NULL && (*second_node)->next != NULL)
+
+	/* temporal copy of node */
+	temp1 = node_x->prev;
+	temp2 = node_y->next;
+
+	/* not pointed to NULL */
+	if (temp1)
 	{
-		(*first_node)->prev	= (*first_node)->next;
-		(*first_node)->next = (*second_node)->next;
-		(*second_node)->next->prev = (*second_node)->prev;
-		(*second_node)->next = (*second_node)->prev;
-		(*second_node)->prev = NULL;
+		temp1->next = node_y;
 	}
-	else if ((*second_node)->next == NULL) /* EDGE: second nd is tail of DLL */
+
+	if (temp2)
 	{
-		(*second_node)->next = (*second_node)->prev;
-		(*second_node)->prev = (*first_node)->prev;
-		(*first_node)->prev->next = (*first_node)->next;
-		(*first_node)->prev = (*first_node)->next;
-		(*first_node)->next = NULL;
+		temp2->prev = node_x;
 	}
-	else
+	/* do the swap by untyign and reconect */
+	node_x->next = temp2;
+	node_x->prev = node_y;
+	node_y->next = node_x;
+	node_y->prev = temp1;
+
+	if (temp1 == NULL)
 	{
-		(*first_node)->prev->next = (*first_node)->next;
-		(*second_node)->next->prev = (*second_node)->prev;
-		(*second_node)->prev = (*first_node)->prev;
-		(*first_node)->prev = (*first_node)->next;
-		(*first_node)->next = (*second_node)->next;
-		(*second_node)->next = (*second_node)->next->prev;
+		*head = node_y;
 	}
 }
