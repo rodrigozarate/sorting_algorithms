@@ -31,10 +31,10 @@ void insertion_sort_list(listint_t **list)
 		if (second_node->n < sorted_ptr->n)
 		{
 			swap_node(&sorted_ptr, &second_node);
+			sorted_ptr = (*list);
 			if ((*list)->prev != NULL)
 				*list = (*list)->prev;
 			print_list(*list);
-			sorted_ptr = *list;
 			continue;
 		}
 		sorted_ptr = sorted_ptr->next;
