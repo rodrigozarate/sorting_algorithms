@@ -21,34 +21,24 @@ void insertion_sort_list(listint_t **list)
 	listint_t *second_node;
 
 	sorted_ptr = *list;
-	if (!*list) /* GUARD CONDITION */
+	if (!*list || !list || !(*list)->next) /* GUARD CONDITION */
 		return;
-	while (sorted_ptr != NULL)
+	while (sorted_ptr->next != NULL)
 	{
 		second_node = sorted_ptr->next;
 		if (!second_node)
 			return;
-		if (second_node->n >= sorted_ptr->n)
-		{
-			sorted_ptr = sorted_ptr->next;
-			continue;
-		}
-		else
+		if (second_node->n < sorted_ptr->n)
 		{
 			swap_node(&sorted_ptr, &second_node);
+			sorted_ptr = (*list);
 			if ((*list)->prev != NULL)
 				*list = (*list)->prev;
 			print_list(*list);
-			sorted_ptr = *list;
 			continue;
 		}
+		sorted_ptr = sorted_ptr->next;
 	}
-	while ((*list)->next != NULL)
-	{
-		*list = (*list)->next;
-		free((*list)->prev);
-	}
-	free(*list);
 }
 
 /**
@@ -62,12 +52,6 @@ void insertion_sort_list(listint_t **list)
 */
 void swap_node(listint_t **first_node, listint_t **second_node)
 {
-	if (!*first_node) /* EDGE CASE: one node hits NULL */
-		return;
-	if (!*second_node) /* EDGE CASE: one node hits NULL */
-		return;
-	if (*first_node == *second_node) /* EDGE CASE: both nodes are the same */
-		return;
 	if ((*first_node)->prev == NULL && (*second_node)->next == NULL)
 	{
 		(*second_node)->next = (*second_node)->prev;
@@ -75,7 +59,7 @@ void swap_node(listint_t **first_node, listint_t **second_node)
 		(*second_node)->prev = NULL;
 		(*first_node)->next = NULL;
 	}
-	else if ((*first_node)->prev == NULL) /* EDGE: first node is head of DLL */
+	else if ((*first_node)->prev == NULL && (*second_node)->next != NULL)
 	{
 		(*first_node)->prev	= (*first_node)->next;
 		(*first_node)->next = (*second_node)->next;
