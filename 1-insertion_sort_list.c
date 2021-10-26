@@ -23,7 +23,7 @@ void insertion_sort_list(listint_t **list)
 	sorted_ptr = *list;
 	if (!*list || !list || !(*list)->next) /* GUARD CONDITION */
 		return;
-	while (sorted_ptr != NULL)
+	while (sorted_ptr->next != NULL)
 	{
 		second_node = sorted_ptr->next;
 		if (!second_node)
@@ -43,12 +43,6 @@ void insertion_sort_list(listint_t **list)
 			continue;
 		}
 	}
-	while ((*list)->next != NULL)
-	{
-		*list = (*list)->next;
-		free((*list)->prev);
-	}
-	free(*list);
 }
 
 /**
