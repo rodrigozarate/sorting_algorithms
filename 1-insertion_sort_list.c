@@ -56,12 +56,6 @@ void insertion_sort_list(listint_t **list)
 */
 void swap_node(listint_t **first_node, listint_t **second_node)
 {
-	if (!*first_node) /* EDGE CASE: one node hits NULL */
-		return;
-	if (!*second_node) /* EDGE CASE: one node hits NULL */
-		return;
-	if (*first_node == *second_node) /* EDGE CASE: both nodes are the same */
-		return;
 	if ((*first_node)->prev == NULL && (*second_node)->next == NULL)
 	{
 		(*second_node)->next = (*second_node)->prev;
