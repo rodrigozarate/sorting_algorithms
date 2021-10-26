@@ -17,7 +17,7 @@ void shell_sort(int *array, size_t size)
 	/* create array of gaps lower than array size */
 	for (i = 1, gap = 1; gap < size; i += 1)
 	{
-		 gap = gap * 3 + 1;
+		gap = gap * 3 + 1;
 	}
 	/* remove bigger */
 	gap = (gap - 1) / 3;
