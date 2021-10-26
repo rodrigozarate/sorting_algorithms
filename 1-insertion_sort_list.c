@@ -21,8 +21,6 @@ void insertion_sort_list(listint_t **list)
 	while (sorted_ptr->next != NULL)
 	{
 		second_node = sorted_ptr->next;
-		if (!second_node)
-			return;
 		if (second_node->n < sorted_ptr->n)
 		{
 			swap_node(&sorted_ptr, &second_node);
