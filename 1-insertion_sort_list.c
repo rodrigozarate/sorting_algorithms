@@ -3,7 +3,7 @@
 * Date: 20, October 2021
 * Author: Oscar Angel and Rodrigo Zárate Algecira
 */
-
+#include <stdlib.h>
 #include <stddef.h>
 #include "sort.h"
 
@@ -43,6 +43,12 @@ void insertion_sort_list(listint_t **list)
 			continue;
 		}
 	}
+	while ((*list)->next != NULL)
+	{
+		*list = (*list)->next;
+		free((*list)->prev);
+	}
+	free(*list);
 }
 
 /**

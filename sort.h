@@ -1,6 +1,9 @@
 #ifndef SORT_H_BIG_O
 #define SORT_H_BIG_O
 
+#include <stdlib.h>
+#include <stdio.h>
+
 /**
  * struct listint_s - Doubly linked list node
  *
@@ -27,5 +30,6 @@ void quick_part(int *array, int low, int high, size_t size);
 size_t lomuto(int *array, int low, int high, size_t size);
 void shell_sort(int *array, size_t size);
 void insertionsort(int *array, size_t size);
+void counting_sort(int *array, size_t size);
 
 #endif /* SORT_H_BIG_O */
