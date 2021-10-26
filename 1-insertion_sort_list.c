@@ -21,7 +21,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *second_node;
 
 	sorted_ptr = *list;
-	if (!*list || !list || !(*list)->next ) /* GUARD CONDITION */
+	if (!*list || !list || !(*list)->next) /* GUARD CONDITION */
 		return;
 	while (sorted_ptr != NULL)
 	{
@@ -75,7 +75,7 @@ void swap_node(listint_t **first_node, listint_t **second_node)
 		(*second_node)->prev = NULL;
 		(*first_node)->next = NULL;
 	}
-	else if ((*first_node)->prev == NULL) /* EDGE: first node is head of DLL */
+	else if ((*first_node)->prev == NULL && (*second_node)->next != NULL)
 	{
 		(*first_node)->prev	= (*first_node)->next;
 		(*first_node)->next = (*second_node)->next;
