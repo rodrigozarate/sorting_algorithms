@@ -19,6 +19,12 @@ void insertion_sort_list(listint_t **list)
 	listint_t *head, *prev;
 	int stored;
 
+	/* point 5 checker validation */
+	if (list == NULL || (*list)->next == NULL || (*list) == NULL)
+	{
+		return;
+	}
+
 	head = *list;
 	/* walk the list */
 	while (head)
