@@ -28,12 +28,7 @@ void insertion_sort_list(listint_t **list)
 		second_node = sorted_ptr->next;
 		if (!second_node)
 			return;
-		if (second_node->n >= sorted_ptr->n)
-		{
-			sorted_ptr = sorted_ptr->next;
-			continue;
-		}
-		else
+		if (second_node->n < sorted_ptr->n)
 		{
 			swap_node(&sorted_ptr, &second_node);
 			if ((*list)->prev != NULL)
@@ -42,6 +37,7 @@ void insertion_sort_list(listint_t **list)
 			sorted_ptr = *list;
 			continue;
 		}
+		sorted_ptr = sorted_ptr->next;
 	}
 }
 
