@@ -1,8 +1,3 @@
-/*
-* 1-insertion_sort_list.c - Implement insertion sort algorithm
-* Date: 20, October 2021
-* Author: Oscar Angel and Rodrigo Zárate Algecira
-*/
 #include <stdlib.h>
 #include <stddef.h>
 #include "sort.h"
