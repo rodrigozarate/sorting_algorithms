@@ -41,7 +41,7 @@ void dohalf(int *array, int flag, size_t size, size_t initsize)
 	}
 
 	/* Merging operation up or down according to flag */
-	printf("Merging [%zu/%zu] (%s):\n", size, initsize,
+	printf("Merging [%lu/%lu] (%s):\n", size, initsize,
 		(flag == 1) ? "UP" : "DOWN");
 	print_array(array, size);
 	/* recursion up */
@@ -51,7 +51,7 @@ void dohalf(int *array, int flag, size_t size, size_t initsize)
 	/* join in recursion */
 	merge(array, flag, size);
 	/* show result */
-	printf("Result [%zu/%zu] (%s):\n", size, initsize,
+	printf("Result [%lu/%lu] (%s):\n", size, initsize,
 		(flag == 1) ? "UP" : "DOWN");
 	print_array(array, size);
 }
