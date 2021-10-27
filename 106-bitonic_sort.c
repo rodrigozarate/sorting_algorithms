@@ -8,7 +8,11 @@
 
 void bitonic_sort(int *array, size_t size)
 {
-
+	/* guard */
+	if (array == NULL || size < 2)
+	{
+		return;
+	}
 	dohalf(array, 1, size, size);
 }
 
