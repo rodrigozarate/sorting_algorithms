@@ -10,10 +10,11 @@ int max_num(int *array, size_t size);
 void counting_sort(int *array, size_t size)
 {
 	int *count_array;
-	int i, max, n;
+	int i, k, n;
 
-	max = max_num(array, size);
-	n = max + 1;
+	k = max_num(array, size);
+	printf("%d\n", k);
+	n = k + 1;
 	count_array = malloc(sizeof(int) * n);
 	if (!count_array)
 		return;
@@ -28,19 +29,19 @@ void counting_sort(int *array, size_t size)
 	}
 	for (i = 1; i < n; i++)
 	{
-		count_array[i] = count_array[i] +  count_array[i - 1];
+		count_array[i] = count_array[i - 1] + count_array[i];
 	}
 	for (i = 0; i < (int)size; i++)
 	{
 		array[i] = 0;
 	}
-	for (i = 0; i < n; i++)
+	for (i = 0; i < k; i++)
 	{
 		++array[count_array[i]];
 	}
-	for (i = 1; i < n; i++)
+	for (i = 1; i < (int)size; i++)
 	{
-		array[i] = array[i] +  array[i - 1];
+		array[i] = array[i - 1] + array[i];
 	}
 	print_array(count_array, n);
 	free(count_array);
@@ -56,10 +57,10 @@ void counting_sort(int *array, size_t size)
  */
 int max_num(int *array, size_t size)
 {
-	int i;
+	size_t i;
 	int max;
 
-	for (i = 0; i < (int)size; i++)
+	for (i = 0; i < size; i++)
 	{
 		if (array[i] >= max)
 			max = array[i];
