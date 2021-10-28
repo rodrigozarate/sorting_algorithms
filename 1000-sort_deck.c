@@ -1,4 +1,4 @@
-/*
+
 * 1000-sort_deck.c - Sort deck
 * Author: Rodrigo Zárate Algecira
 * Date: 27, oct, 2021
@@ -104,6 +104,5 @@ int card_id(deck_node_t *node)
 			return (myval);
 		}
 	}
-	/* error */
 	exit(EXIT_FAILURE);
 }
