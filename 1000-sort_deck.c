@@ -9,8 +9,10 @@
 #include "deck.h"
 
 /**
-* sort_deck - Sort the crds
+* sort_deck - Sort the cards
 * @deck: double linked list
+*
+* Sort cards of a given struct
 */
 
 void sort_deck(deck_node_t **deck)
@@ -58,6 +60,8 @@ void sort_deck(deck_node_t **deck)
 * swap_deck - swap node in deck
 * @deck: pointer to head
 * @node: swap node
+*
+* swap nodes reconnecting prev and next
 */
 
 void swap_deck(deck_node_t **deck, deck_node_t *node)
@@ -86,6 +90,8 @@ void swap_deck(deck_node_t **deck, deck_node_t *node)
 * card_id - give id to each card
 * @node: pointer
 * Return: int
+*
+* Match cards value with list
 */
 
 int card_id(deck_node_t *node)
