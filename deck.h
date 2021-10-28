@@ -4,6 +4,15 @@
 #include <stddef.h>
 #include <string.h>
 
+/**
+* enum kind_e - Inmutable shapes
+*
+* @SPADE: 0
+* @HEART: 1
+* @CLUB: 2
+* @DIAMOND: 3
+*/
+
 typedef enum kind_e
 {
 	SPADE = 0,
