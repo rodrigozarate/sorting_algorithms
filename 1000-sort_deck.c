@@ -1,4 +1,4 @@
-
+/*
 * 1000-sort_deck.c - Sort deck
 * Author: Rodrigo Zárate Algecira
 * Date: 27, oct, 2021
